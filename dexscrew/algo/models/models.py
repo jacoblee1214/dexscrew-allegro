@@ -52,7 +52,10 @@ class ActorCritic(nn.Module):
             # the output of env_mlp and proprioceptive regression should both be before activation
             self.env_mlp = MLP(units=self.priv_mlp, input_size=kwargs['priv_info_dim'], with_last_activation=False)
             if self.priv_info_stage2:
-                temporal_fusing_input_dim = 24
+                # 스텝당 고유수용감각 = numActions(관절위치) + numActions(목표).
+                # XHand 는 12+12=24 라 원본이 24 로 박아뒀지만, 20-DoF 손에서는 40 이어야 한다.
+                # 안 맞추면 stage2(증류) 에서 에러 없이 관측이 잘린다.
+                temporal_fusing_input_dim = kwargs.get('proprio_dim', 24)
                 temporal_fusing_output_dim = 8
                 if self.use_point_cloud_info:
                     temporal_fusing_output_dim += 32

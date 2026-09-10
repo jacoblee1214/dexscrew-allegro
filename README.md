@@ -1,3 +1,10 @@
+> **이 저장소는 Allegro v6(20-DoF) 이식 private fork 입니다.**
+> 이식 관련 환경 구축·실행 방법은 [README_ALLEGRO.md](README_ALLEGRO.md),
+> 결과와 분석은 [docs/allegro_port_report.md](docs/allegro_port_report.md) 를 보세요.
+> 아래는 업스트림 원본 README 입니다.
+
+---
+
 # Learning Dexterous Manipulation Skills from Imperfect Simulations
 <a href="https://dexscrew.github.io/"><strong>Project Page</strong></a>
 |

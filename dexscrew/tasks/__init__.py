@@ -28,9 +28,14 @@
 
 
 from dexscrew.tasks.xhand_hora import XHandHora
+from dexscrew.tasks.allegro_hora import AllegroHora
 
 # Mappings from strings to environments
 isaacgym_task_map = {
     'XHandHoraNutBolt': XHandHora,
     'XHandHoraScrewDriver': XHandHora,
+    'AllegroHoraScrewDriver': AllegroHora,
+    'AllegroThickScrewDriver': AllegroHora,
+    'AllegroXThickScrewDriver': AllegroHora,
+    'AllegroForceScrewDriver': AllegroHora,
 }

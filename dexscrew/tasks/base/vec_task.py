@@ -57,7 +57,10 @@ class Env(ABC):
             self.graphics_device_id = -1
 
         self.num_environments = config['env']['numEnvs']
-        self.num_observations = 32 * 3
+        # 스텝당 관측 = numActions(관절위치) + numActions(목표), 최근 3스텝을 이어붙인다.
+        # XHand 원본은 32*3=96 으로 박혀 있었고 뒤 24칸이 항상 0이었다(스텝당 실제 폭은 24).
+        # 20-DoF 손에서는 스텝당 40 이 되어 :32 슬라이스에 잘리므로 config 로 명시해야 한다.
+        self.num_observations = config['env'].get('numObservations', 32 * 3)
         self.num_actions = config['env']['numActions']
 
         self.obs_space = spaces.Box(np.ones(self.num_obs, dtype=np.float32) * -np.Inf, np.ones(self.num_obs, dtype=np.float32) * np.Inf)

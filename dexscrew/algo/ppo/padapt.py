@@ -64,6 +64,7 @@ class ProprioAdapt(object):
             'point_mlp_units': self.network_config.point_mlp.units,
             'use_point_cloud_info': self.use_point_cloud_info,
             'proprio_len': self.proprio_len,
+            'proprio_dim': self.ppo_config.get('proprio_dim', 24),
         }
 
         self.model = ActorCritic(net_config)

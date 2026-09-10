@@ -1,0 +1,47 @@
+seed: ${..seed}
+algo: PPO
+network:
+  mlp:
+    units: [512, 256, 128]
+  priv_mlp:
+    units: [256, 128, 8]
+  point_mlp:
+    units: [32, 32, 32]
+load_path: ${..checkpoint} # path to the checkpoint to load
+
+ppo:
+  output_name: 'debug'
+  normalize_input: True
+  normalize_value: True
+  normalize_priv: True
+  normalize_point_cloud: True
+  value_bootstrap: True
+  num_actors: ${...task.env.numEnvs}
+  gamma: 0.99
+  tau: 0.95
+  learning_rate: 5e-3
+  kl_threshold: 0.02
+  # PPO batch collection
+  horizon_length: 12
+  minibatch_size: 16384
+  mini_epochs: 5
+  # PPO loss setting
+  clip_value: True
+  critic_coef: 4
+  entropy_coef: 0.0
+  e_clip: 0.2
+  bounds_loss_coef: 0.0
+  # grad clipping
+  truncate_grads: True
+  grad_norm: 1.0
+  # snapshot setting
+  # in terms of agent steps (should consider multi-gpu)
+  save_best_after: 0
+  save_frequency: 500
+  max_agent_steps: 10000000000
+  # hora setting
+  priv_info: True
+  use_point_cloud_info: True
+  proprio_len: 30
+  proprio_dim: 40   # allegro: 20 관절위치 + 20 목표 (xhand 는 24)
+  proprio_adapt: False

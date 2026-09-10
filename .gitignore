@@ -233,3 +233,20 @@ dexscrew/algo/models/pointnets.py
 deterministic_test.py
 # ignore Python bytecode directories
 __pycache__/
+
+
+############################
+# ALLEGRO v6 PORT (private fork)
+############################
+
+# 손 URDF/메시는 사내 자산이라 저장소에 넣지 않는다.
+# 실물은 ~/allegro_assets/ 에 두고 assets/ 아래로 심볼릭 링크한다.
+#   ln -s ~/allegro_assets/V6_Force_L    assets/allegro_v6_force_l
+#   ln -s ~/allegro_assets/V6_left_urdf  assets/allegro_v6_left
+assets/allegro_v6_force_l
+assets/allegro_v6_left
+assets/allegro_v6_right
+
+# 학습 산출물 (/mnt/sdb 로 심볼릭 링크)
+outputs
+wandb
